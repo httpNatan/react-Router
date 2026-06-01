@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { BrowserRouter,Routes,Route} from 'react-router'
+import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import Home from "./paginas/Home"
 import About from './paginas/About'
 import Navbar from './componentes/Navbar'
+import Usuario from './componentes/Usuario'
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
             <Navbar/>
           <Routes>
                  <Route path='/' element= {<Home/>} />  
-                 <Route path='about'  element={<About/>}/>                              
+                 <Route path='about'  element={<About/>}/>                            
           </Routes>
       </BrowserRouter>
     </>
