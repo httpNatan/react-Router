@@ -15,7 +15,9 @@ function App() {
             <Navbar/>
           <Routes>
                  <Route path='/' element= {<Home/>} />  
-                 <Route path='about'  element={<About/>}/>                            
+                 <Route path='about'  element={<About/>}/>
+                 {/*rota dinamica para usuario */}
+                 <Route path='usuario/:id' element={<Usuario/>}/>                            
           </Routes>
       </BrowserRouter>
     </>

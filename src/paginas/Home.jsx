@@ -1,8 +1,9 @@
-import { UseFetch } from "../hooks/UseFetch"
+import { useFetch } from "../hooks/UseFetch"
+import { Link } from "react-router-dom"
 
 const Home = () => {
-
-const {dadoUsers,erro,loading} = UseFetch()
+const url = 'https://dummyjson.com/users'
+const {dadoUsers,erro,loading} = useFetch(url)
 
   return (
       <main className="conteudo">
@@ -14,7 +15,8 @@ const {dadoUsers,erro,loading} = UseFetch()
             {dadoUsers.map((user)=>{
               return (
                 <li className="item" key={user.id}>
-                  {user.firstName} {user.lastName} 
+                  {user.firstName} {user.lastName}
+                  <Link to={`/usuario/${user.id}`} className="botao-perfil">Ver perfil do usuário</Link>
                 </li>
               )
             })}

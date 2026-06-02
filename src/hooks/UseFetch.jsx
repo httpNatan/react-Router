@@ -1,19 +1,19 @@
 import { useState,useEffect } from "react"
 
-export const UseFetch = ()=>{
+export const useFetch = (url)=>{
+
+    
     const [dadoUsers,setDadoUsers] = useState([])
     const [erro,setErro] = useState(null)
     const [loading,setLoading] = useState(true)
-    
-    const url = 'https://dummyjson.com/users'
 
     useEffect(()=>{
         var buscarDados = async ()=>{
             try{
                 const dadoJson = await fetch(url)
                 const dado = await dadoJson.json()
-                // usar apenas o array de users para facilitar o consumo
-                setDadoUsers(dado.users || [])
+                // se a resposta tiver users, retornamos o array; caso contrário, retornamos o objeto único
+                setDadoUsers(dado.users ? dado.users : dado)
             }catch(err){
                 setErro(err)
             }finally{
@@ -22,7 +22,7 @@ export const UseFetch = ()=>{
         }
 
         buscarDados()
-    },[])
+    },[url])
 
     return{dadoUsers,erro,loading}
 }
